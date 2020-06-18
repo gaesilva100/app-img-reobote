@@ -8,6 +8,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -40,9 +41,12 @@ public class FilesController {
 
 	// Upload_Na Maquina.
 	@PostMapping("{idimovel}")
-	public String upload(@PathVariable(value="idimovel")String idimovel,@RequestParam(value= "files") MultipartFile []files  ) throws IllegalStateException, IOException{
-		this.registerImgBuildingFacade.registerImages(idimovel, files);
-		return("Essa Bagaça ta Funcionando !!!");
+	public ArrayList<String> upload(@PathVariable(value="idimovel")String idimovel,@RequestParam(value= "files") MultipartFile []files  ) throws IllegalStateException, IOException{
+		ArrayList<String> registerImages = this.registerImgBuildingFacade.registerImages(idimovel, files);
+		//registerImages.get(index);
+		//System.out.println("Mime Type: " + folder.getMimeType() + " --- Name: " + folder.getName());
+		
+		return(registerImages);
 		
 	}
 

@@ -69,9 +69,10 @@ public class FilesService {
 		
 		File file = createGoogleFile.createGoogleFileByte(folderParentId, "image/jpeg", image.getName(), image.getContent());
 		image.setUrl(file.getWebContentLink());
-		System.out.println(file.getWebContentLink());
-
-		return (null);
+		System.out.println(" Na Classe  FilesService "+file.getWebContentLink());
+		String imageLink = file.getWebContentLink();
+		
+		return (imageLink);
 	}
 
 	// tratamento do 

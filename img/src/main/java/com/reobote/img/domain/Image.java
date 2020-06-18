@@ -1,12 +1,13 @@
 package com.reobote.img.domain;
 
-public class Image {
+public class Image extends ImageEntity {
 	
+	private String cpnj;
+	private String contractCode;
 	private byte[] content; 
 	private String name;
 	private String extension;
-	private String description;
-	private String url;
+	
 	
 	public byte[] getContent() {
 		return content;
@@ -27,19 +28,18 @@ public class Image {
 		this.extension = extension;
 	}
 	
-	
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	
 
+	public String getCpnj() {
+		return cpnj;
+	}
+	public void setCpnj(String cpnj) {
+		this.cpnj = cpnj;
+	}
+	
+	public String getContractCode() {
+		return contractCode;
+	}
+	public void setContractCode(String contractCode) {
+		this.contractCode = contractCode;
+	}
 }
