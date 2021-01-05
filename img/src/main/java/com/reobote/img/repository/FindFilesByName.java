@@ -40,15 +40,6 @@ public class FindFilesByName {
         return list;
     }
  
-    //public static void main(String[] args) throws IOException {
-    	// Aqui que pesquisa 
-      //  List<File> rootGoogleFolders = getGoogleFilesByName("uteis");
-      // (File folder : rootGoogleFolders) {
- 
-       //     System.out.println("Mime Type: " + folder.getMimeType() + " --- Name: " + folder.getName());
-      //  }
- 
-     //   System.out.println("Done!");
-  //  }
+   
 
 }

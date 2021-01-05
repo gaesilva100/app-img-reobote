@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import  org.springframework.stereotype.Repository;
 
-import com.reobote.img.domain.Image;
+import com.mongodb.client.result.UpdateResult;
 import com.reobote.img.domain.ImageEntity;
 
   
@@ -31,9 +31,14 @@ import com.reobote.img.domain.ImageEntity;
 		  Query query = new Query (Criteria.where("cnpj").is(cnpj).and("buildings").
 				  elemMatch(Criteria.where("contractCode").is(contractcode)));
 		  Update update =new Update().set("buildings.$.images", imagens);
-		  this.mongotemplate.updateFirst(query, update, "imobiliarias");
-		
+		  UpdateResult updateResult = this.mongotemplate.updateFirst(query, update, "imobiliarias");
+		  System.out.println(updateResult.getMatchedCount());
 		  
+		  // if updateResult.getMatchedcout = 0 {
+	   // }
+		  
+		  //throw new Exception();
+	  
 		  
 	  }
   

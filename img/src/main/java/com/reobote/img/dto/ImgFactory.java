@@ -1,7 +1,5 @@
 package com.reobote.img.dto;
 
-import java.util.ArrayList;
-
 import com.reobote.img.domain.Image;
 
 

@@ -5,8 +5,6 @@ import com.google.api.client.http.FileContent;
 import com.google.api.client.http.InputStreamContent;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
-import com.reobote.img.config.GoogleDriveUtils;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
