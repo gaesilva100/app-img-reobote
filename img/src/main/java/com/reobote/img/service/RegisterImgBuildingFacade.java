@@ -3,17 +3,16 @@ package com.reobote.img.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.reobote.img.domain.Image;
-import com.reobote.img.repository.ImgRepository;
+import com.reobote.img.repository.FindFoldersByName;
+
 
 @Service
 public class RegisterImgBuildingFacade {
-	
+
 	@Autowired
 	private ImageParser imageParser;
 	@Autowired
@@ -22,25 +21,30 @@ public class RegisterImgBuildingFacade {
 	private FilesService filesService;
 	@Autowired
 	private BuildingImageService buildingImageService;
+
 	
-	
-	public ArrayList<String> registerImages (String codigoImovel,MultipartFile []files) throws IOException{
+	@Autowired
+	private FindFolderService findFolderService;
+
+	public String  registerImages (String cpnj,String codigoImovel,MultipartFile []files) throws IOException{
+
 		
-		//ArrayList<String> Array = new ArrayList();
 		
-		String folderId = folderService.folder(codigoImovel);
+		String idFolder = findFolderService.FindFolderServe(cpnj);
+
+		String SubfolderId = folderService.folderUploadService(codigoImovel,idFolder);
+
+		//Nome Do Arquivo Vai Aqui... 
 		List<Image> listImagens = imageParser.parser(files, codigoImovel);
+
 		for (Image image:listImagens) {
-			String teste1 = this.filesService.uploadDrive(image, folderId);
-			
-			
-			System.out.println("RegisterImgBuildingFacade "+ teste1);
-			
+			this.filesService.uploadDrive(image, SubfolderId);
 		}
-		buildingImageService.addImagensToBuilding("9999999999", codigoImovel, listImagens);
-		
+
+		buildingImageService.addImagensToBuilding(cpnj, codigoImovel, listImagens);
+
 		return (null);
-		
+
 	}
 
 

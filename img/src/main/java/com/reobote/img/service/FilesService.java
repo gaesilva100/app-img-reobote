@@ -1,17 +1,10 @@
 package com.reobote.img.service;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
-import java.util.regex.Pattern;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.google.api.services.drive.model.File;
 import com.reobote.img.domain.Image;
 import com.reobote.img.repository.CreateGoogleFile;
@@ -61,36 +54,28 @@ public class FilesService {
 		return null;
 	}
 
-	// tratamento do upload do arquivo.
+	//tratamento do upload do arquivo.
 	public  String uploadDrive(Image image,String folderParentId ) throws IllegalStateException, IOException {
-		
-		
-		
-		
 		File file = createGoogleFile.createGoogleFileByte(folderParentId, "image/jpeg", image.getName(), image.getContent());
 		image.setUrl(file.getWebContentLink());
-		System.out.println(" Na Classe  FilesService "+file.getWebContentLink());
-		String imageLink = file.getWebContentLink();
-		
-		return (imageLink);
+		//String imageLink = file.getWebContentLink();
+		//System.out.println(" Na Classe  FilesService "+ imageLink);
+		return ("ok.");
 	}
 
 	// tratamento do 
 	public String validaExtensao(MultipartFile file)throws IllegalStateException, IOException {
-		
-		byte[] bytes = file.getBytes();
 
-
+		//byte[] bytes = file.getBytes();
 		System.out.println("aqui 3 -" + System.getProperty("user.dir"));
-
-		Pattern pattern = Pattern.compile("\\.(\\w+)$");
+		//Pattern pattern = Pattern.compile("\\.(\\w+)$");
 		String extensaoarquivo = file.getOriginalFilename().replaceFirst("\\w+$", "$0");
 
 
 		return (extensaoarquivo);
 	}
 
-	
-	
-	
+
+
+
 }

@@ -33,15 +33,6 @@ public class CreateFolder {
 	        return file.getId();
 	    }
 	 
-	 //   public static void main(String[] args) throws IOException {
-	 
-	        // Create a Root Folder
-	   //     File folder = createGoogleFolder(null, "TEST-FOLDER");
-	         
-	 //       System.out.println("Created folder with id= "+ folder.getId());
-	  //      System.out.println("                    name= "+ folder.getName());
-	 
-	  //      System.out.println("Done!");
-	  //  }
+
 
 }
